@@ -4,6 +4,8 @@ const app = express(); //call express
 //set up ejs as view engine for rendering views
 app.set("view engine", "ejs");
 
+require("./model/index")//initialize db
+
 //define routes
 app.get("/", (req, res) => {
   // res.send("this is home");
