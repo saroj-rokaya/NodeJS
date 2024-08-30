@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create a Blog</title>
-    <link rel="stylesheet" href="create.css">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -20,7 +20,7 @@
     <!-- Form Section -->
     <div class="form-container">
         <h2>Submit Your Article</h2>
-        <form action="/create" method="post" enctype="multipart/form-data">
+        <form>
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required>
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="image">Upload Image:</label>
-                <input type="file" id="image" name="image" accept="image/*">
+                <input type="file" id="image" name="image" accept="image/*" required>
             </div>
             <button type="submit" class="submit-btn">Submit</button>
         </form>

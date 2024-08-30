@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: true }));//to understand url-encoded data
 app.set("view engine", "ejs");
 require("./model/index");
 
+app.get("/",(req,res)=>{
+  res.render("home");
+})
+
 app.get ("/create",(req,res)=>{
     res.render("create");
 })
@@ -22,12 +26,14 @@ app.post("/create", upload.single('image') ,async(req,res)=>{
   // const title = req.body.title
   // const subtitle = req.body.subtitle
   // const description = req.body.description  
+  // const filename = req.file.filename //to get image data
   const {title,subtitle,description}=req.body;
 
   await blogs.create({
     title : title,
     subtitle : subtitle,
     description : description,
+    image : req.file.filename  //req.file.path to get the path of the uploaded file, but not recommended for production. req.file.filename to get the name of the uploaded file.
     
     // title,
     // subtitle,
