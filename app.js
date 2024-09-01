@@ -21,6 +21,31 @@ app.get("/create", (req, res) => {
   res.render("create");
 });
 
+// app.get("/singleBlog/:id ",async(req, res) => {
+//   const id = req.params.id;
+//   const fullBlog = await blogs.findByPk(id); //returns objects
+//   res.render("singleBlog",{fullBlog:fullBlog});
+// });
+
+app.get("/singleBlog/:id",async(req,res)=>{
+  const id = req.params.id;
+  const fullBlog = await blogs.findByPk(id);
+  res.render("singleBlog",{fullBlog:fullBlog});
+})
+
+
+app.get("/delete/:id",async(req,res)=>{
+  const id = req.params.id;
+await blogs.destroy({
+    where:{
+      id:id
+    }
+
+  })
+  res.redirect("/");
+})
+
+
 app.post("/create", upload.single("image"), async (req, res) => {
   // console.log(req.body);
   // const title = req.body.title
@@ -43,7 +68,7 @@ app.post("/create", upload.single("image"), async (req, res) => {
 });
 
 app.use(express.static("public/css/"));
-app.use(express.static("./storage"))//to permit the storage file
+app.use(express.static("./storage")); //to permit the storage file
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });

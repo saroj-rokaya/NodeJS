@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Blog Post</title>
+    <link rel="stylesheet" href="/singleBlog.css">
+</head>
+<body>
+    <div class="blog-post">
+        <img src="http://localhost:3000/<%- fullBlog.image %>" alt="Blog Post Image" class="blog-image">
+        <div class="blog-content">
+            <h1 class="blog-title"><%- fullBlog.title %></h1>
+            <h2 class="blog-subtitle"><%- fullBlog.subtitle %></h2>
+            <p class="blog-description">
+                <%- fullBlog.description %>
+            </p>
+            <div class="blog-actions">
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
