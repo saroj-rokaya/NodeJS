@@ -21,11 +21,7 @@ app.get("/create", (req, res) => {
   res.render("create");
 });
 
-// app.get("/singleBlog/:id ",async(req, res) => {
-//   const id = req.params.id;
-//   const fullBlog = await blogs.findByPk(id); //returns objects
-//   res.render("singleBlog",{fullBlog:fullBlog});
-// });
+
 
 app.get("/singleBlog/:id",async(req,res)=>{
   const id = req.params.id;
@@ -40,7 +36,6 @@ await blogs.destroy({
     where:{
       id:id
     }
-
   })
   res.redirect("/");
 })
