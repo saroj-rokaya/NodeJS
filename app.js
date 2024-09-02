@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const { blogs } = require("./model/index");
+const { blogs, users } = require("./model/index");
 // const multer = require("./middleware/multerConfig").multer;
 // const storeate = require("./middleware/multerConfig").storage
 const app = express();
@@ -61,6 +61,29 @@ app.post("/create", upload.single("image"), async (req, res) => {
   });
   res.send("create blog added successfully");
 });
+
+app.get("/login",(req,res)=>{
+  res.render("login");
+})
+app.get("/signup",(req,res)=>{
+  res.render("signup");
+})
+
+app.post("/signup",async(req,res)=>{
+  const {username,email,password}= req.body;
+  await users.create({
+    username,
+    email,
+    password
+  });
+  res.redirect("/login");
+});
+
+
+
+
+
+
 
 app.use(express.static("public/css/"));
 app.use(express.static("./storage")); //to permit the storage file
