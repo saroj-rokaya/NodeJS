@@ -1,3 +1,4 @@
+const { blogs } = require("../model/index.js");
 
 
 exports.homePage = async (req, res) => {

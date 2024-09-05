@@ -1,3 +1,7 @@
+const { users } = require("../model/index.js");
+const bcrypt = require("bcrypt");
+// const { hashSync, compareSync } = require("bcrypt");
+
 exports.renderLogin = (req, res) => {
   res.render("login");
 };
