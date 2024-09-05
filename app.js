@@ -5,19 +5,8 @@ const { blogs, users } = require("./model/index");
 const app = express();
 const { multer, storage } = require("./middleware/multerConfig.js");
 const { hashSync, compareSync } = require("bcrypt");
-const {
-  homepage,
-  singleBlog,
-  deleteBlog,
-  createpage,
-  createBlog,
-} = require("./controller/blogController.js");
-const {
-  renderLogin,
-  loginUser,
-  renderSignup,
-  signupUser,
-} = require("./controller/authController.js");
+const {singleBlog, deleteBlog, createBlog, homePage, createPage,} = require("./controller/blogController.js");
+const {renderLogin, loginUser, renderSignup, signupUser,} = require("./controller/authController.js");
 const upload = multer({ storage: storage });
 
 app.use(express.urlencoded({ extended: true })); //to understand url-encoded data
@@ -25,11 +14,11 @@ app.use(express.urlencoded({ extended: true })); //to understand url-encoded dat
 app.set("view engine", "ejs");
 require("./model/index");
 
-app.get("/", homepage);
-app.get("/create", createpage);
+app.get("/", homePage);
 app.get("/singleBlog/:id", singleBlog);
 app.get("/delete/:id", deleteBlog);
-app.post("/create", createBlog);
+app.get("/create", createPage);
+app.post("/create", upload.single("image"), createBlog);
 
 //login section
 app.get("/login", renderLogin);

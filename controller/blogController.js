@@ -1,9 +1,11 @@
-exports.homepage = async (req, res) => {
+
+
+exports.homePage = async (req, res) => {
   const blogsData = await blogs.findAll();
   res.render("home", { blogdata: blogsData });
 };
 
-exports.createpage = (req, res) => {
+exports.createPage = (req, res) => {
   res.render("create");
 };
 
@@ -23,8 +25,7 @@ exports.deleteBlog = async (req, res) => {
   res.redirect("/");
 };
 
-(exports.createBlog = upload.single("image")),
-  async (req, res) => {
+exports.createBlog = async (req, res) => {
     // console.log(req.body);
     // const title = req.body.title
     // const subtitle = req.body.subtitle
